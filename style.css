@@ -1,0 +1,152 @@
+/* GENERAL */
+
+@font-face {
+	font-family: DIN;
+	src: url(dinreg.ttf)
+	}
+@font-face{
+	font-family: DINP;
+	src: url(dinpreg.otf);
+}
+
+body{
+	position:relative;
+	font-family:DINP;}
+	
+.left, .right{
+	display:inline-block;
+	margin:auto 3em;
+	vertical-align:top;
+	}
+
+ul{
+	list-style-type:none;
+}
+
+/* FORM */
+
+form{
+	display:inline;
+}
+
+label, input{
+display:block;
+margin:1em;
+}
+
+input{
+	padding:1em;
+}
+
+input[type="radio"]{
+	display:none;
+}
+
+/* BUTTONS */
+
+.button{
+	margin:1em auto;
+	border:thin solid #ddd;
+	background:transparent;	
+	padding:1em;
+	display: inline-block;
+	text-align:center;
+	cursor:pointer;
+	font-size:1em;
+	//line-height:1em;
+	width:auto;
+	}
+	
+	.button:hover{
+		background:#eee;}
+	
+/* FORMAT OUTPUT BEFORE PRINT */
+
+.nev_wrapper{
+	text-align:center;
+	width:300px;
+	height:540px;
+	border:thin dashed #d3d3d3;
+	}
+.nev_wrapper img{
+	width:calc(100% - 2px);}
+
+.nc_primary{
+	font-family:DINP;
+	text-transform:uppercase;
+	padding-bottom:0;
+	margin:0.5em 0 0.4em 0;
+	}
+
+.nc_secondary{
+	//padding:0;
+	margin:0;
+	letter-spacing:0.01em;
+	padding:0.1em 0;}
+
+.nev20{
+	font-size:20pt;}	
+.nev18{
+	font-size:18pt;}	
+.nev16{
+	font-size:16pt;}
+.nev14{
+	font-size:14pt;}
+.nev12{
+	font-size:12pt;}
+.nev10{
+	font-size:10pt;}
+	
+@page{ size: auto; margin: 3mm; }
+
+@media print{
+#header, #footer, #nav { display: none !important; } 
+#nev_outer{
+	position:fixed;
+	z-index:999999999999;
+	top:0;
+	left:0;
+	width:297mm;
+	height:210mm;
+	margin:0;
+	padding:1mm;
+	background-color:white;
+	}
+.nev_wrapper{
+	margin-top:2mm;
+	margin-left:2mm;
+	padding:1mm;
+	width:50mm;
+	height:90mm;
+	float:left;
+	}
+	
+.nc_primary{
+	margin:0;
+	margin-bottom:2mm;
+	}
+	
+.nc_secondary{
+	padding:0;
+	margin:0;
+	}
+
+.nev20{
+	margin-top:1mm;
+	font-size:16pt;}
+.nev18{
+	margin-top:1mm;
+	font-size:14pt;}	
+.nev16{
+	margin-top:1mm;
+	font-size:12pt;}
+.nev14{
+	margin-top:1mm;
+	font-size:10pt;}
+.nev12{
+	margin-top:1mm;
+	font-size:8pt;}
+	
+.nev10{
+	font-size:6pt;}
+}

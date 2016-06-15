@@ -1,0 +1,54 @@
+<!doctype html>
+<html moznomarginboxes mozdisallowselectionprint ng-app="ncGenerator">
+<head>
+	<meta charset="utf-8"/>
+	<title>Simple Angular Namecard Generator</title>
+	<link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+	<script src="angular_nc.js"></script>
+</head>
+<body ng-controller="NCController">
+	<form name="nc_form">
+		<div class="left">
+			<h2>Image on card</h2>
+			<ul>
+				<li ng-repeat="image in images">
+					<input type="radio" ng-model="$parent.nc_template" name="nc_template" id="nc_template{{$index}}" value="{{image.filename}}.{{image.extension}}">
+					<label for="nc_template{{$index}}"><img src="{{image.filename}}.{{image.extension}}" width="80"></label>
+				</li>
+			</ul>
+		</div>
+		<div class="right kozep">
+			<h2>Data on card</h2>
+			<label for="nc_name">Primary data on card</label>
+			<input type="text" ng-model="nc_name" name="nc_name" id="nc_name" placeholder="Enter a name here" maxlength="44" required>
+			<span ng-show="nc_form.nc_name.$touched && nc_form.nc_name.$invalid">Field is required.</span>
+			<label for="nc_line1">Secondary line #1:</label>
+			<input type="text" ng-model="nc_line1" id="nc_line1" placeholder="Your first address line" maxlength="40">
+			<label for="nc_line2">Secondary line #2:</label>
+			<input type="text" ng-model="nc_line2" id="nc_line2" placeholder="Your second address line" maxlength="40">
+			<label for="nc_line3">Secondary line #3:</label>
+			<input type="text" ng-model="nc_line3" id="nc_line3" placeholder="Your third address line" maxlength="40">
+		</div>
+	</form>
+	<div class="right">
+		<h2>Your namecard</h2>
+		<div id="nev_outer">
+			<div class="nev_wrapper">
+				<img class="nev_img" src="{{nc_template}}" />
+				<p id="nevjegy_nev_out" class="nc_primary" ng-attr-class="{{nc_name.length>=33 && 'nc_primary nev14' ||
+				nc_name.length>=25 && 'nc_primary nev16' ||
+				nc_name.length>=15 && 'nc_primary nev18' ||
+				'nc_primary nev20' }}" >{{nc_name}}</p>
+				<p id="nevjegy_out_1" class="nc_secondary" ng-attr-class="{{nc_line1.length>33 && 'nc_secondary nev10' || 'nc_secondary nev12' }}" >{{nc_line1}}</p>
+				<p id="nevjegy_out_2" class="nc_secondary" ng-attr-class="{{nc_line2.length>33 && 'nc_secondary nev10' || 'nc_secondary nev12' }}">{{nc_line2}}</p>
+				<p id="nevjegy_out_3" class="nc_secondary" ng-attr-class="{{nc_line3.length>33 && 'nc_secondary nev10' || 'nc_secondary nev12' }}">{{nc_line3}}</p>
+			</div>
+		</div>
+
+		<div class="nyomwrap">
+			<span class="button nyom" onClick="window.print();">Print the card</span>
+		</div>
+	</div>	
+</body>
+</html>
